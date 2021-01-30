@@ -52,15 +52,22 @@
 		welcome.style.display = "none";
 		title.style.transform = "translateX(30%)";
 		transparent();
+		drawAnt();
 	}
 	function transparent() {
 		var game = document.getElementById("game");
 		var ctx = game.getContext("2d");
 		var imgData = ctx.getImageData(0,0,game.width,game.height);
 		for(var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 3] *= 0.75;
+			imgData.data[i + 3] *= 0.5;
 		}
 		ctx.putImageData(imgData,0,0)
+	}
+
+	function drawAnt() {
+		var game = document.getElementById("game");
+		var topCanvas = game.getBoundingClientRect().top();
+		documemt.write(topCanvas);
 	}
 </script>
 
