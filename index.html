@@ -14,16 +14,6 @@
 	button {
 		font-size: 2em; 
 	}
-	canvas {
-		border: 1px solid black;
-		width: 80%;
-		height: 80%;
-		z-index: -1;
-		margin: auto;
-	}
-	#game {
-		display: none;
-	}
 	#interface {
 		width: 50%;
 		margin: auto;
@@ -31,54 +21,48 @@
 </style>
 
 <script>
-	function setScreen() {
-		var game = document.getElementById("game");
-		var width = screen.width;
-		var height = screen.height;
-		if(width <= 1280)
-		{
-			game.style.width = "70%";
-		}
-	}
-
 	function startGame() {
-		var game = document.getElementById("game");
 		var welcome = document.getElementById("welcome");
 		var title = document.getElementById("title");
 		var aldrich = document.getElementById("aldrich");
-		var ctx = game.getContext("2d");
-		ctx.drawImage(aldrich,0,0,game.width,game.height);
-		game.style.display = "block";
 		welcome.style.display = "none";
 		title.style.transform = "translateX(30%)";
-		transparent();
-		drawAnt();
-	}
-	function transparent() {
-		var game = document.getElementById("game");
-		var ctx = game.getContext("2d");
-		var imgData = ctx.getImageData(0,0,game.width,game.height);
-		for(var i = 0; i < imgData.data.length; i += 4) {
-			imgData.data[i + 3] *= 0.5;
+		var antCounter = 0;
+		for(antCounter = 0; antCounter < 10; antCounter++) {
+			if (!antCounter) {
+				drawAnt();
+				
+			}
+			else {
+				setTimeout(drawAnt,30*antCounter);
+			}
 		}
-		ctx.putImageData(imgData,0,0)
+		
 	}
 
+	var ants = 1;
 	function drawAnt() {
-		var game = document.getElementById("game");
-		var borders = game.getBoundingClientRect();
-		var topCanvas = borders.top;
-		var leftCanvas = borders.left;
-		document.write("<img src=\"ant.PNG\" width=\"10%\">")
+		var spawn = document.getElementById("spawn");
+		var id = "ant" + ants;
+		spawn.innerHTML += "<img src=\"ant.PNG\" width=\"10%\" class=\"ant\" id=\"" + id + "\" onclick=killAnt('" + id + "')>";
+		
+		ants++;
+	}
+	
+	var killScore = 0;
+	function killAnt(antID){
+		var ant = document.getElementById(antID);
+		ant.remove();
+		killScore++;
 	}
 </script>
 
 
-<body onload="setScreen()">
+<body>
 	<div id="interface">
 	<h1 id="title">Peter's Ant Eatings</h1>
 	<div id="welcome">
-	<button id="start" onclick="setTimeout(startGame,1000)">Start</button>
+	<button id="start" onclick="startGame()">Start</button>
 	<br>
 
 	<div id="images" hidden>
@@ -92,8 +76,8 @@
 
 	</div>
 
-	<canvas id="game">
-	</canvas>
+	<div id="spawn">
+	</div>
 
 	
 </body>
