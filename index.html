@@ -45,6 +45,9 @@
 		var game = document.getElementById("game");
 		var welcome = document.getElementById("welcome");
 		var title = document.getElementById("title");
+		var aldrich = document.getElementById("aldrich");
+		var ctx = game.getContext("2d");
+		ctx.drawImage(aldrich,0,0,game.width,game.height);
 		game.style.display = "block";
 		welcome.style.display = "none";
 		title.style.transform = "translateX(30%)";
@@ -65,6 +68,7 @@
 	<br>
 
 	<div id="images" hidden>
+	<img id="aldrich" src="aldrichpark.png">
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
 	<img src="peter.png">
 	<img src="peter2.png">
