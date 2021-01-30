@@ -4,6 +4,12 @@
 	<title>UCIHacks: Peter The Anteater</title>
 </head>
 
+<!--Authors:
+	Timothy Do
+	Tiffany Mejia
+	Christina Wong
+-->
+
 <style>
 	* {
 		font-family: Verdana;
@@ -40,7 +46,7 @@
 		}
 	}
 	.alive {
-		animation: down 2s 1 linear, twitch 0.5s infinite linear;   
+		animation: down 3s 1 linear, twitch 0.5s infinite linear;   
 	}
 
 	#scores {
@@ -52,7 +58,7 @@
 			top: 5%;
 		}
 		to {
-			top: 95%;
+			top: 85%;
 		}
 	}
 
@@ -63,6 +69,15 @@
 </style>
 
 <script>
+	/* 
+	* Todo:
+	* Randomize Ants
+	* Sound Effects!
+	* UI
+	* Settings
+	* Make it Funny!
+	*/
+
 	let lives, ants, killScore;
 
 	function startGame() {
@@ -70,10 +85,10 @@
 		let welcome = document.getElementById("welcome");
 		let title = document.getElementById("title");
 		let scores = document.getElementById("scores");
-
 		welcome.style.display = "none";
 		scores.style.display = "block";
 		lives = 3, ants = 1, killScore = 0;
+		updateScores();
 		let antCoutner = 0; 
 		for(antCounter = 0; antCounter * (.05*screen.width) < screen.width; antCounter++) {
 			if (!antCounter) {
@@ -81,17 +96,42 @@
 				
 			}
 			else {
-				setTimeout(drawAnt,250*antCounter);
+				setTimeout(drawAnt,500*antCounter);
 			}
 		}
 		
+	}
+
+	function updateScores() {
+		let kill = document.getElementById("killCounter");
+		let live = document.getElementById("liveCounter");
+		kill.innerHTML = "<h2>Ant Deaths: " + killScore + "</h2>";
+		let i;
+		let hearts = "";
+		live.innerHTML = "<h2>Lives: </h2>";
+		for(i = 1; i <= 3; i++) {
+			if(i <= lives) {
+				hearts += "<img src=\"heart.png\" width=\"5%\">";
+			}
+			else {
+				hearts += "<img src=\"blackheart.png\" width=\"5%\">";
+			}
+		}
+		live.innerHTML += hearts;
+		setTimeout(function() {
+			if(!lives) {
+			alert("You are Dinner.");
+			window.location.reload();
+			}
+		},0);
+
 	}
 
 	function drawAnt() {
 		let spawn = document.getElementById("spawn");
 		let id = "ant" + ants;
 		let transformPercent = (ants - 1)*5;
-		let ant = HTMLify("<img onload=\"takeLife('" + id + "')\" src=\"ant.png\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
+		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"ant.png\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
 		spawn.appendChild(ant);
 		ants++;
 	}
@@ -100,13 +140,15 @@
 		let ant = document.getElementById(antID);
 		ant.remove();
 		killScore++;
-
+		updateScores();
 	}
 
 	function takeLife(antID) {
 		let ant = document.getElementById(antID);
 		ant.addEventListener('animationend', () => {
 			ant.remove();
+			--lives;
+			updateScores();
 		});
 	}
 
@@ -130,7 +172,7 @@
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
 	<img src="peter.png">
 	<img src="peter2.png">
-	<img src="heart.png">
+	<img src="heart.png" width="10%">
 	</div>
 
 	</div>
@@ -145,8 +187,8 @@
 
 <footer>
 <div id="scores">
-<div id="killCounters"><h2>Ant Deaths: </h2></div>
-<div id="lives"><h2>Lives: </h2></div>	
+<div id="killCounter"><h2>Ant Deaths: </h2></div>
+<div id="liveCounter"><h2>Lives: </h2></div>	
 </div>
 </footer>
 
