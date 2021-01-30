@@ -20,6 +20,8 @@
 	}
 	button {
 		font-size: 1.5em; 
+		background-color: rgb(147, 211, 248);
+		border-radius: 8px;
 	}
 	#interface {
 		width: 50%;
@@ -111,15 +113,16 @@
 		let rightPeter = document.getElementById("peterright");
 		scores.style.display = "block";
 		start.hidden = true;
+		addCookies();
 		leftPeter.style.animation = "leftPeter 0.5s 1 linear";
 		rightPeter.style.animation = "rightPeter 0.5s 1 linear";
 		setTimeout(function() {
 			leftPeter.style.transform = "translate(-500%,-20%)";
-			rightPeter.style.transform = "translate(400%,200%)";
+			rightPeter.style.transform = "translate(400%,250%)";
 		},500);
 		lives = 3, ants = 1, killScore = 0, antCounter = 0, threshold = 200, maxAnts = 20;
 		updateScores(); 
-		for(antCounter = 0; antCounter * (.05*screen.width) < screen.width; antCounter++) {
+		for(antCounter = 0; antCounter * (.05*window.innerWidth) < window.innerWidth; antCounter++) {
 			if (!antCounter) {
 				drawAnt();	
 			}
@@ -163,7 +166,7 @@
 	function drawAnt() {
 		let spawn = document.getElementById("spawn");
 		let id = "ant" + ants;
-		let random = Math.floor(Math.random()*(maxAnts-1) + 1);
+		let random = Math.trunc(Math.random()*(maxAnts-1) + 1);
 		//let spacer = random + " ";
 		//document.write(spacer);
 		let transformPercent = (random - 1)*5;
@@ -173,7 +176,7 @@
 	}
 
 	function killAnt(antID){
-		killScore++;
+		++killScore;
 		let ant = document.getElementById(antID);
 		ant.remove();
 		updateScores();
@@ -196,13 +199,28 @@
 
 	function addCookies() {
 		let cookie = document.getElementById("cookies");
-		let line = "";
-		for(let i = 0; i < screen.width; i += 32) {
+		let line = "<h1 font>";
+		let cookieLength = widthOf("<h1>🍪</h1>");
+		console.log(cookieLength);
+		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
 			line += '🍪';
 		}
-		document.write(line);
+		line += "<\h1>";
+		cookies.innerHTML = line;
 	}
-	
+
+	function widthOf(text) {
+		let div = document.createElement('div');
+		div.innerHTML = text;
+		div.style.display = 'inline-block';
+		div.style.position = 'fixed';
+		div.style.opacity = 0;
+		div.style.pointerEvents = 'none';
+		document.body.appendChild(div);
+		let width = div.getBoundingClientRect().width;
+		div.remove();
+		return width;
+	}
 </script>
 
 
@@ -244,7 +262,7 @@
 
 
 <footer>
-<div id="scores" onload="addCookies()">
+<div id="scores">
 <div id="cookies"></div>
 <div id="killCounter"><h2>Ant Deaths: </h2></div>
 <div id="liveCounter"><h2>Lives: </h2></div>	
