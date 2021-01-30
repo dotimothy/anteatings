@@ -19,7 +19,7 @@
 		font-size: 2em;
 	}
 	button {
-		font-size: 2em; 
+		font-size: 1.5em; 
 	}
 	#interface {
 		width: 50%;
@@ -58,7 +58,7 @@
 			top: 5%;
 		}
 		to {
-			top: 85%;
+			top: 70%;
 		}
 	}
 
@@ -66,12 +66,34 @@
 		position: fixed;
 		bottom: 0%;
 	}
+
+	@keyframes leftPeter {
+		0% {
+			transform: translate(-200%,-20%);
+		}
+		100% {
+			transform: translate(-500%, -20%);
+		}
+	}
+
+	@keyframes rightPeter {
+		0% {
+			transform: translate(100%,-40%);
+		}
+		50% {
+			transform: translate(400%, -40%);
+		}
+		100% {
+			transform: translate(400%,250%); 
+		}
+		
+	}
 </style>
 
 <script>
 	/* 
 	* Todo:
-	* Randomize Ants
+	* Randomize Ants(check)
 	* Sound Effects!
 	* UI
 	* Settings
@@ -79,25 +101,30 @@
 	* Peter the Anteater :) 
 	*/
 
-	let lives, ants, killScore;
+	let lives, ants, killScore,antCounter, threshold, maxAnts;
 
 	function startGame() {
 		alert("Eat All The Ants Before They Eat You!");
-		let welcome = document.getElementById("welcome");
-		let title = document.getElementById("title");
+		let start = document.getElementById("start");
 		let scores = document.getElementById("scores");
-		welcome.style.display = "none";
+		let leftPeter = document.getElementById("peterleft");
+		let rightPeter = document.getElementById("peterright");
 		scores.style.display = "block";
-		lives = 3, ants = 1, killScore = 0;
-		updateScores();
-		let antCoutner = 0; 
+		start.hidden = true;
+		leftPeter.style.animation = "leftPeter 0.5s 1 linear";
+		rightPeter.style.animation = "rightPeter 0.5s 1 linear";
+		setTimeout(function() {
+			leftPeter.style.transform = "translate(-500%,-20%)";
+			rightPeter.style.transform = "translate(400%,200%)";
+		},500);
+		lives = 3, ants = 1, killScore = 0, antCounter = 0, threshold = 1000, maxAnts = 20;
+		updateScores(); 
 		for(antCounter = 0; antCounter * (.05*screen.width) < screen.width; antCounter++) {
 			if (!antCounter) {
-				drawAnt();
-				
+				drawAnt();	
 			}
 			else {
-				setTimeout(drawAnt,500*antCounter);
+				setTimeout(drawAnt,threshold*antCounter);
 			}
 		}
 		
@@ -120,27 +147,35 @@
 		}
 		live.innerHTML += hearts;
 		setTimeout(function() {
-			if(!lives) {
+			let lose = !lives;
+			let win = (ants == antCounter+1 && killScore >= ants-(3-lives+1));
+			if(lose) {
 			alert("You are Dinner.");
 			window.location.reload();
 			}
-		},0);
-
+			else if(win) {
+			alert("You Survived.");
+			window.location.reload();
+			}
+		},20);
 	}
 
 	function drawAnt() {
 		let spawn = document.getElementById("spawn");
 		let id = "ant" + ants;
-		let transformPercent = (ants - 1)*5;
+		let random = Math.floor(Math.random()*(maxAnts-1) + 1);
+		//let spacer = random + " ";
+		//document.write(spacer);
+		let transformPercent = (random - 1)*5;
 		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"ant.PNG\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
 		spawn.appendChild(ant);
 		ants++;
 	}
 
 	function killAnt(antID){
+		killScore++;
 		let ant = document.getElementById(antID);
 		ant.remove();
-		killScore++;
 		updateScores();
 	}
 
@@ -158,16 +193,23 @@
 		div.innerHTML = txt;
 		return div.firstElementChild;
 	}
+	
 </script>
 
 
 <body>
+	<!--Christina Work-->
 	<div id="interface">
-	<h1 id="title">Peter's Ant Eatings</h1>
+	<div id="title">
+	<h1>Peter's Ant Eatings</h1>
+	
+	<img id="peterleft" src="peter.png" style="position: fixed; transform: translate(-200%,-20%); width: 10%">
+	
 	<div id="welcome">
 	<button id="start" onclick="startGame()">Start</button>
+	
 	<br>
-
+	
 	<div id="images" hidden>
 	<img id="aldrich" src="aldrichpark.png">
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
@@ -175,6 +217,11 @@
 	<img src="peter2.png">
 	<img src="heart.png" width="10%">
 	</div>
+
+
+	</div>
+
+	<img id="peterright" src="peter2.png" style="position: fixed; transform: translate(100%,-40%); width: 10%;">
 
 	</div>
 
@@ -188,6 +235,7 @@
 
 <footer>
 <div id="scores">
+<!--Christina Cookie-->
 <div id="killCounter"><h2>Ant Deaths: </h2></div>
 <div id="liveCounter"><h2>Lives: </h2></div>	
 </div>
