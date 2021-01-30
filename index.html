@@ -18,6 +18,9 @@
 		width: 50%;
 		margin: auto;
 	}
+	.ant {
+		transform: rotate(115deg);
+	}
 </style>
 
 <script>
@@ -26,7 +29,6 @@
 		var title = document.getElementById("title");
 		var aldrich = document.getElementById("aldrich");
 		welcome.style.display = "none";
-		title.style.transform = "translateX(30%)";
 		var antCounter = 0;
 		for(antCounter = 0; antCounter < 10; antCounter++) {
 			if (!antCounter) {
@@ -44,7 +46,7 @@
 	function drawAnt() {
 		var spawn = document.getElementById("spawn");
 		var id = "ant" + ants;
-		spawn.innerHTML += "<img src=\"ant2.PNG\" width=\"10%\" class=\"ant\" id=\"" + id + "\" onclick=killAnt('" + id + "')>";
+		spawn.innerHTML += "<img src=\"ant.PNG\" width=\"10%\" class=\"ant\" id=\"" + id + "\" onclick=killAnt('" + id + "')>";
 		
 		ants++;
 	}
