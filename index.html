@@ -47,13 +47,13 @@
 		var title = document.getElementById("title");
 		var aldrich = document.getElementById("aldrich");
 		var ctx = game.getContext("2d");
-		ctx.drawImage(aldrich,0,0,aldrich.width,aldrich.height);
+		ctx.drawImage(aldrich,0,0,game.width,game.height);
 		game.style.display = "block";
 		welcome.style.display = "none";
 		title.style.transform = "translateX(30%)";
-		drawAnts();
+		transparent();
 	}
-	function drawAnts() {
+	function transparent() {
 		//draw ant
 		//make them move down
 		var game = document.getElementById("game");
