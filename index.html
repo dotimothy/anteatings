@@ -77,7 +77,7 @@
 	* Settings
 	* Make it Funny!
 	* Peter the Anteater :) 
-	* tim stop breaking hearts
+	* tim stop breaking hearts <- facts
 	*/
 
 	let lives, ants, killScore;
@@ -133,7 +133,7 @@
 		let spawn = document.getElementById("spawn");
 		let id = "ant" + ants;
 		let transformPercent = (ants - 1)*5;
-		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"ant.png\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
+		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"ant.PNG\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
 		spawn.appendChild(ant);
 		ants++;
 	}
