@@ -10,11 +10,22 @@
 	}
 </style>
 
+<script>
+	var game = document.getElementById("game");
+	var start = document.getElementById("start");
+	function startGame() {
+		game.removeAttribute("hidden");
+		
+	}
+</script>
+
+
 <body>
 	<h1>Peter the Anteater</h1>
+	<button id="start" onclick="startGame()">Start</button>
 </body>
 
-<canvas id="game">
+<canvas id="game" hidden>
 </canvas>
 
 </html>
