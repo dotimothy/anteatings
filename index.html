@@ -47,7 +47,7 @@
 		var title = document.getElementById("title");
 		var aldrich = document.getElementById("aldrich");
 		var ctx = game.getContext("2d");
-		ctx.drawImage(aldrich,0,0,game.width,game.height);
+		ctx.drawImage(aldrich,0,0,aldrich.width,aldrich.height);
 		game.style.display = "block";
 		welcome.style.display = "none";
 		title.style.transform = "translateX(30%)";
@@ -56,6 +56,13 @@
 	function drawAnts() {
 		//draw ant
 		//make them move down
+		var game = document.getElementById("game");
+		var ctx = game.getContext("2d");
+		var imgData = ctx.getImageData(0,0,game.width,game.height);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			imgData.data[i + 3] *= 0.75;
+		}
+		ctx.putImageData(imgData,0,0)
 	}
 </script>
 
@@ -64,7 +71,7 @@
 	<div id="interface">
 	<h1 id="title">Peter's Ant Eatings</h1>
 	<div id="welcome">
-	<button id="start" onclick="startGame()">Start</button>
+	<button id="start" onclick="setTimeout(startGame,1000)">Start</button>
 	<br>
 
 	<div id="images" hidden>
