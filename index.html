@@ -117,7 +117,7 @@
 			leftPeter.style.transform = "translate(-500%,-20%)";
 			rightPeter.style.transform = "translate(400%,200%)";
 		},500);
-		lives = 3, ants = 1, killScore = 0, antCounter = 0, threshold = 1000, maxAnts = 20;
+		lives = 3, ants = 1, killScore = 0, antCounter = 0, threshold = 200, maxAnts = 20;
 		updateScores(); 
 		for(antCounter = 0; antCounter * (.05*screen.width) < screen.width; antCounter++) {
 			if (!antCounter) {
@@ -157,7 +157,7 @@
 			alert("You Survived.");
 			window.location.reload();
 			}
-		},20);
+		},100);
 	}
 
 	function drawAnt() {
@@ -192,6 +192,15 @@
 		let div = document.createElement('div');
 		div.innerHTML = txt;
 		return div.firstElementChild;
+	}
+
+	function addCookies() {
+		let cookie = document.getElementById("cookies");
+		let line = "";
+		for(let i = 0; i < screen.width; i += 32) {
+			line += '🍪';
+		}
+		document.write(line);
 	}
 	
 </script>
@@ -233,9 +242,10 @@
 	
 </body>
 
+
 <footer>
-<div id="scores">
-<!--Christina Cookie-->
+<div id="scores" onload="addCookies()">
+<div id="cookies"></div>
 <div id="killCounter"><h2>Ant Deaths: </h2></div>
 <div id="liveCounter"><h2>Lives: </h2></div>	
 </div>
