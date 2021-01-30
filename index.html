@@ -11,17 +11,25 @@
 -->
 
 <style>
+	@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 	* {
-		font-family: Verdana;
+		font-family: 'Open Sans', sans-serif;
 		user-select: none;
 	}
 	h1 {
 		font-size: 2em;
 	}
 	button {
-		font-size: 1.5em; 
-		background-color: rgb(147, 211, 248);
+		font-size: 1.25em; 
+		background-color: rgb(190, 221, 240);
 		border-radius: 8px;
+		padding: 8px;
+	}
+	button:hover {
+		opacity: 0.75;
+	}
+	button:active {
+		transform: translateY(3px);
 	}
 	#interface {
 		width: 50%;
@@ -33,7 +41,7 @@
 		position: fixed;
 	}
 	body {
-		background: linear-gradient(rgba(255,255,255,0.66), rgba(255,255,255,0.66)),url("aldrichpark.png");
+		background: linear-gradient(rgba(255,255,255,0.66), rgba(255,255,255,0.66)),url("originalpark.png");
 		background-size: 100%;
 	}
 	@keyframes twitch {
@@ -100,7 +108,7 @@
 	* UI
 	* Settings
 	* Make it Funny!
-	* Peter the Anteater :) 
+	* Peter the Anteater :) (check)
 	*/
 
 	let lives, ants, killScore,antCounter, threshold, maxAnts;
