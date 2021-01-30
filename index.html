@@ -66,8 +66,10 @@
 
 	function drawAnt() {
 		var game = document.getElementById("game");
-		var topCanvas = game.getBoundingClientRect().top;
-		documemt.write(topCanvas);
+		var borders = game.getBoundingClientRect();
+		var topCanvas = borders.top;
+		var leftCanvas = borders.left;
+		document.write("<img src=\"ant.PNG\" width=\"10%\">")
 	}
 </script>
 
