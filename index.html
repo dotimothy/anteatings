@@ -50,13 +50,9 @@
 		title.style.transform = "translateX(30%)";
 		drawAnts();
 	}
-
 	function drawAnts() {
-		var game = document.getElementById("game");
-		var ctx = game.getContext("2d");
-		var ant = document.getElementById("ant");
-		ctx.drawImage(ant,0,0,screen.width/9,screen.width/9);
-
+		//draw ant
+		//make them move down
 	}
 </script>
 
@@ -68,7 +64,7 @@
 	<button id="start" onclick="startGame()">Start</button>
 	<br>
 
-	<div id="images">
+	<div id="images" hidden>
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
 	<img src="peter.png">
 	<img src="peter2.png">
