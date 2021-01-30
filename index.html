@@ -7,6 +7,7 @@
 <style>
 	* {
 		font-family: Verdana;
+		user-select: none;
 	}
 	h1 {
 		font-size: 2em;
@@ -17,45 +18,102 @@
 	#interface {
 		width: 50%;
 		margin: auto;
+		text-align: center;
 	}
-	/*.ant {
-		transform: rotate(115deg);
-	}*/
+	.ant {
+		user-select: none;
+		position: fixed;
+	}
+	body {
+		background: linear-gradient(rgba(255,255,255,0.66), rgba(255,255,255,0.66)),url("aldrichpark.png");
+		background-size: 100%;
+	}
+	@keyframes twitch {
+		0% {
+			transform: rotate(-45deg);
+		}
+		50% {
+			transform: rotate(45deg); 
+		}
+		100% {
+			transform: rotate(-45deg);
+		}
+	}
+	.alive {
+		animation: down 2s 1 linear, twitch 0.5s infinite linear;   
+	}
+
+	#scores {
+		display: none;
+	}
+
+	@keyframes down {
+		from {
+			top: 5%;
+		}
+		to {
+			top: 95%;
+		}
+	}
+
+	footer {
+		position: fixed;
+		bottom: 0%;
+	}
 </style>
 
 <script>
+	let lives, ants, killScore;
+
 	function startGame() {
-		var welcome = document.getElementById("welcome");
-		var title = document.getElementById("title");
-		var aldrich = document.getElementById("aldrich");
+		alert("Eat All The Ants Before They Eat You!");
+		let welcome = document.getElementById("welcome");
+		let title = document.getElementById("title");
+		let scores = document.getElementById("scores");
+
 		welcome.style.display = "none";
-		var antCounter = 0;
-		for(antCounter = 0; antCounter < 10; antCounter++) {
+		scores.style.display = "block";
+		lives = 3, ants = 1, killScore = 0;
+		let antCoutner = 0; 
+		for(antCounter = 0; antCounter * (.05*screen.width) < screen.width; antCounter++) {
 			if (!antCounter) {
 				drawAnt();
 				
 			}
 			else {
-				setTimeout(drawAnt,30*antCounter);
+				setTimeout(drawAnt,250*antCounter);
 			}
 		}
 		
 	}
 
-	var ants = 1;
 	function drawAnt() {
-		var spawn = document.getElementById("spawn");
-		var id = "ant" + ants;
-		spawn.innerHTML += "<img src=\"ant.png\" width=\"10%\" class=\"ant\" id=\"" + id + "\" onclick=killAnt('" + id + "')>";
-		
+		let spawn = document.getElementById("spawn");
+		let id = "ant" + ants;
+		let transformPercent = (ants - 1)*5;
+		let ant = HTMLify("<img onload=\"takeLife('" + id + "')\" src=\"ant.png\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
+		spawn.appendChild(ant);
 		ants++;
 	}
-	
-	var killScore = 0;
+
 	function killAnt(antID){
-		var ant = document.getElementById(antID);
+		let ant = document.getElementById(antID);
 		ant.remove();
 		killScore++;
+
+	}
+
+	function takeLife(antID) {
+		let ant = document.getElementById(antID);
+		ant.addEventListener('animationend', () => {
+			ant.remove();
+		});
+	}
+
+	function HTMLify(txt) {
+		let div = document.createElement('div');
+		div.innerHTML = txt;
+		return div.firstElementChild;
 	}
 </script>
 
@@ -72,6 +130,7 @@
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
 	<img src="peter.png">
 	<img src="peter2.png">
+	<img src="heart.png">
 	</div>
 
 	</div>
@@ -83,5 +142,12 @@
 
 	
 </body>
+
+<footer>
+<div id="scores">
+<div id="killCounters"><h2>Ant Deaths: </h2></div>
+<div id="lives"><h2>Lives: </h2></div>	
+</div>
+</footer>
 
 </html>
