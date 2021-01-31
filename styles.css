@@ -4,24 +4,25 @@
     user-select: none;
 }
 body {
-    background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
-    background-size: 100%;
+    pointer-events: none;
     animation: fadein 2s 1 linear;
+    background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
+    background-size: 100%;
 }
 @keyframes fadein {
     0% {
         opacity: 0;
-        background: linear-gradient(rgba(255,255,255,1.0),rgba(255, 255, 255, 1.0)),url("media/originalpark.jpg");
+        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
         background-size: 100%;
     }
     50% {
         opacity: 0.5;
-        background: linear-gradient(rgba(255,255,255,0.6),rgba(255, 255, 255, 0.6)),url("media/originalpark.jpg");
+        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
         background-size: 100%;
     }
     100% {
         opacity: 1;
-        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
+        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
         background-size: 100%;
     }
 
@@ -34,6 +35,7 @@ button {
     font-size: 2.5em; 
     border-radius: 8px;
     padding: 6px;
+    border-width: thin thick;
 }
 button:hover {
     opacity: 0.75;
@@ -42,7 +44,7 @@ button:active {
     transform: translateY(3px);
 }
 #title {
-    background-color: rgb(236, 230, 134);
+    background-color: rgb(247, 241, 168);
     padding: 5px;
     border: black;
 }

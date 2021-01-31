@@ -3,10 +3,14 @@
 	* Randomize Ants(check)
 	* Sound Effects!(almost)
 	* UI
-	* Settings
+	* Settings(diffsettings done)
 	* Make it Funny! (check)
 	* Peter the Anteater :) (check)
-	*/
+    */
+    
+    document.addEventListener('animationend', () => {
+        document.body.style.pointerEvents = "auto";
+    });
 
 	let maxLives, lives, ants, killScore,antCounter, threshold, maxAnts, level;
     
@@ -78,7 +82,7 @@
 	function medium() {
 		maxLives = 5;
 		maxAnts = 50;
-		threshold = 800;
+		threshold = 700;
 		let warning = document.getElementById("warning");
 		warning.currentTime = 0;
 		warning.volume = 0.25;
@@ -110,10 +114,10 @@
 		live.innerHTML = "<h2>Lives: " + lives + "/" + maxLives + " Lives</h2>";
 		for(i = 1; i <= maxLives; i++) {
 			if(i <= lives) {
-				hearts += "<img src=\"media/heart.png\" width=\"2%\">";
+				hearts += "<img src=\"media/heart.png\" width=\"4%\">";
 			}
 			else {
-				hearts += "<img src=\"media/blackheart.png\" width=\"2%\">";
+				hearts += "<img src=\"media/blackheart.png\" width=\"4%\">";
 			}
 		}
 		live.innerHTML += hearts;
