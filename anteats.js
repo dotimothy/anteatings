@@ -8,34 +8,35 @@
 	* Peter the Anteater :) (check)
 	*/
 
-	/*
-	window.addEventListener('resize',checkScreen);
-
-	function checkScreen() {
-		return window.innerWidth != screen.width ? setTimeout(function () {
-			alert("Invalid Screen Size, Please Show Full Screen & Reload.")
-			window.location.reload();
-		},0) : 1;
-	}
-	*/
 	let maxLives, lives, ants, killScore,antCounter, threshold, maxAnts, level;
-	
+    
+    function checkScreen() {
+        return window.innerWidth != screen.width ? setTimeout(function () {
+            alert("Not Full Screen. Please Show Full Screen & Reload.")
+            window.location.reload();
+        },0) : 1;
+    }
+
 	function startGame(difficulty) {
-		level = difficulty;
+        window.addEventListener('resize',checkScreen);
+        level = difficulty;
+        let message = ""
 		switch(difficulty) {
 			case "easy": {
-				alert("Squash All Them Ants!"); 
+				message += "Squash All Them Ants!" 
 				break;
 			}
 			case "medium": {
-				alert("Eat All the Ants Before They Eat You!");
+				message += "Eat All the Ants Before They Eat You!";
 				break;				
 			}	
 			case "hard": {
-				alert("You Will Be Eaten!");
+                message += "You Will Be Eaten";
 				break;
 			}	 		
 		}
+        message += " (Please Use Full Screen to Play)";
+        alert(message);
 		let start = document.getElementById("start");
 		let scores = document.getElementById("scores");
 		let leftPeter = document.getElementById("peterleft");
@@ -44,10 +45,10 @@
 		start.hidden = true;
 		addCookies();
 		leftPeter.style.animation = "leftPeter 1s 1 linear";
-		rightPeter.style.animation = "rightPeter 2s 1 linear";
+		rightPeter.style.animation = "rightPeter 1s 1 linear";
 		setTimeout(function() {
 			leftPeter.style.transform = "translate(-605%, 0%)";
-			rightPeter.style.transform = "translate(400%, 200%)";
+			rightPeter.style.transform = "translate(400%, -75%)";
 		},500);
 		lives = maxLives, ants = 1, killScore = 0, antCounter = 0,  //medium
 		updateScores(); 
@@ -154,7 +155,7 @@
 			let audio;
 			switch(level) {
 				case "easy": {
-					audio = document.getElementById("owie");
+					audio = document.getElementById("nyam");
 					break;
 				}
 				case "medium": {
@@ -166,7 +167,8 @@
 					break;	
 				}
 			}
-			//audio.currentTime = 0;
+            //audio.currentTime = 0;
+            audio.volume = 0.25;
 			audio.playbackRate =  2-threshold/1500;
 			audio.play();
 			

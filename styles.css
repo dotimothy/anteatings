@@ -6,16 +6,18 @@
 body {
     background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
     background-size: 100%;
-    animation: fadein 2s 1 linear;
+    transition: opacity 2s ease-in;
 }
 @keyframes fadein {
     0% {
         opacity: 0;
-        background: black;
+        background: linear-gradient(rgba(255,255,255,1.0),rgba(255, 255, 255, 1.0)),url("media/originalpark.jpg");
+        background-size: 100%;
     }
     50% {
         opacity: 0.5;
-        background: green;
+        background: linear-gradient(rgba(255,255,255,0.6),rgba(255, 255, 255, 0.6)),url("media/originalpark.jpg");
+        background-size: 100%;
     }
     100% {
         opacity: 1;
@@ -74,13 +76,13 @@ button:active {
 }
 
 #easy {
-    background-color:lime;
+    background-color:rgb(165, 245, 165);
 }
 #medium {
-    background-color: yellow;
+    background-color: rgb(245, 245, 150);
 }
 #hard {
-    background-color: red;
+    background-color: rgb(245, 135, 135);
 }
 @keyframes down {
     from {
@@ -109,11 +111,8 @@ footer {
     0% {
         transform: translate(140%,-75%);
     }
-    50% {
-        transform: translate(400%,-75%);
-    }
     100% {
-        transform: translate(400%,200%); 
+        transform: translate(400%,-75%);
     }
 }
 a {
