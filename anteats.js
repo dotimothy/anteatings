@@ -8,34 +8,35 @@
 	* Peter the Anteater :) (check)
 	*/
 
-	/*
-	window.addEventListener('resize',checkScreen);
-
-	function checkScreen() {
-		return window.innerWidth != screen.width ? setTimeout(function () {
-			alert("Invalid Screen Size, Please Show Full Screen & Reload.")
-			window.location.reload();
-		},0) : 1;
-	}
-	*/
 	let maxLives, lives, ants, killScore,antCounter, threshold, maxAnts, level;
-	
+    
+    function checkScreen() {
+        return window.innerWidth != screen.width ? setTimeout(function () {
+            alert("Not Full Screen. Please Show Full Screen & Reload.")
+            window.location.reload();
+        },0) : 1;
+    }
+
 	function startGame(difficulty) {
-		level = difficulty;
+        window.addEventListener('resize',checkScreen);
+        level = difficulty;
+        let message = ""
 		switch(difficulty) {
 			case "easy": {
-				alert("Squash All Them Ants!"); 
+				message += "Squash All Them Ants!" 
 				break;
 			}
 			case "medium": {
-				alert("Eat All the Ants Before They Eat You!");
+				message += "Eat All the Ants Before They Eat You!";
 				break;				
 			}	
 			case "hard": {
-				alert("You Will Be Eaten!");
+                message += "You Will Be Eaten";
 				break;
 			}	 		
 		}
+        message += " (Please Use Full Screen to Play)";
+        alert(message);
 		let start = document.getElementById("start");
 		let scores = document.getElementById("scores");
 		let leftPeter = document.getElementById("peterleft");

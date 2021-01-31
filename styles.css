@@ -11,11 +11,13 @@ body {
 @keyframes fadein {
     0% {
         opacity: 0;
-        background: black;
+        background: linear-gradient(rgba(255,255,255,1.0),rgba(255, 255, 255, 1.0)),url("media/originalpark.jpg");
+        background-size: 100%;
     }
     50% {
         opacity: 0.5;
-        background: green;
+        background: linear-gradient(rgba(255,255,255,0.6),rgba(255, 255, 255, 0.6)),url("media/originalpark.jpg");
+        background-size: 100%;
     }
     100% {
         opacity: 1;
