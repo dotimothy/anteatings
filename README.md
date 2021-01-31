@@ -1,4 +1,4 @@
-# Peter's Anteatings
+# Peter's Anteatings: Peter's Ant Hunt!
 Collaborators: <a href="https://github.com/dotimothy">Timothy Do</a>, Tiffany Mejia, Christina Wong
 
 ## Welcome to Peter's Anteating!
