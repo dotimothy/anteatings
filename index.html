@@ -219,10 +219,10 @@
 	function updateScores() {
 		let kill = document.getElementById("killCounter");
 		let live = document.getElementById("liveCounter");
-		kill.innerHTML = "<h2>Ant Deaths: " + killScore + "</h2>";
+		kill.innerHTML = "<h2>Ant Deaths: " + killScore + "/"+ maxAnts + " Ants</h2>";
 		let i;
 		let hearts = "";
-		live.innerHTML = "<h2>Lives: </h2>";
+		live.innerHTML = "<h2>Lives: " + lives + "/" + maxLives + " Lives</h2>";
 		for(i = 1; i <= maxLives; i++) {
 			if(i <= lives) {
 				hearts += "<img src=\"heart.png\" width=\"3%\">";
