@@ -155,7 +155,7 @@
 			let audio;
 			switch(level) {
 				case "easy": {
-					audio = document.getElementById("owie");
+					audio = document.getElementById("nyam");
 					break;
 				}
 				case "medium": {
@@ -167,7 +167,8 @@
 					break;	
 				}
 			}
-			//audio.currentTime = 0;
+            //audio.currentTime = 0;
+            audio.volume = 0.25;
 			audio.playbackRate =  2-threshold/1500;
 			audio.play();
 			

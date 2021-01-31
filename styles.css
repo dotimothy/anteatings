@@ -6,7 +6,7 @@
 body {
     background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
     background-size: 100%;
-    animation: fadein 2s 1 linear;
+    transition: opacity 2s ease-in;
 }
 @keyframes fadein {
     0% {
