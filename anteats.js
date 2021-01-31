@@ -65,8 +65,14 @@
 	function easy() {
 		maxLives = 10;
 		maxAnts = 20;
-		threshold = 1200;
-		startGame('easy');
+        threshold = 1200;
+        let squash = document.getElementById("squash");
+        squash.currentTime = 0;
+        squash.volume = 0.25;
+        squash.play();
+        setTimeout(function() {
+			startGame('easy');
+		},1000);
 	}
 
 	function medium() {
@@ -79,19 +85,20 @@
 		warning.play();
 		setTimeout(function() {
 			startGame('medium');
-		},800);
+		},1000);
 	}
 
 	function hard() {
 		let eaten = document.getElementById("eaten");
-		eaten.currentTime = 0;
-		eaten.play();
+        eaten.currentTime = 0;
+        eaten.volume = 0.25;
+        eaten.play();
 		maxLives = 3;
 		maxAnts = 100;
 		threshold = 400;
 		setTimeout(function() {
 			startGame('hard');
-		}, 400);
+		}, 1000);
 	}
 	
 	function updateScores() {
