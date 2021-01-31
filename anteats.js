@@ -183,7 +183,7 @@
 		slurp.play();
         let ant = document.getElementById(antID);
         ant.removeAttribute('onclick');
-        ant.setAttribute('src','/media/deadAnt.png');
+        ant.setAttribute('src','media/deadAnt.png');
         ant.setAttribute('style','animation-play-state: paused');
 		//setTimeout(ant.remove(),1500);
 		updateScores();
