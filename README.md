@@ -2,6 +2,8 @@
 Authors: Timothy Do, Tiffany Mejia, Christina Wong
 
 ## Welcome to Peter's Anteating!
+A Web Game specifically tailored for UCI Students!
+
 The goal is simple, eat all the ants
 before they eat your cookies or you...
 
@@ -10,11 +12,11 @@ before they eat your cookies or you...
 The game utilizes HTML, CSS, JS to create
 a web app with various sound effects in 3 different game modes:
 
--Easy
+- Easy: See How The Game Works!
 
--Medium
+- Medium: Practice Here!
 
--Hard
+- Hard: A Clicking Challenge!
 
 Each level increasing the amount of ants, spawn rate
 while decreasing the amount of total lives.
