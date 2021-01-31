@@ -47,7 +47,7 @@
 		position: fixed;
 	}
 	body {
-		background: linear-gradient(rgba(255,255,255,0.3),rgba(255, 255, 255, 0.3)),url("originalpark.jpg");
+		background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("originalpark.jpg");
 		background-size: 100%;
 	}
 	@keyframes twitch {
@@ -67,6 +67,7 @@
 
 	#scores {
 		display: none;
+		line-height: 80%;
 	}
 
 	#easy {
@@ -111,9 +112,10 @@
 		100% {
 			transform: translate(400%,200%); 
 		}
+	}
 
-		
-		
+	a:hover {
+		opacity: 0.5
 	}
 </style>
 
@@ -174,20 +176,20 @@
 	function easy() {
 		maxLives = 10;
 		maxAnts = 20;
-		threshold = 1000;
+		threshold = 1200;
 		startGame('easy');
 	}
 
 	function medium() {
 		maxLives = 5;
 		maxAnts = 50;
-		threshold = 600;
+		threshold = 800;
 		let warning = document.getElementById("warning");
 		warning.currentTime = 0;
 		warning.play();
 		setTimeout(function() {
 			startGame('medium');
-		},600);
+		},800);
 	}
 
 	function hard() {
@@ -211,10 +213,10 @@
 		live.innerHTML = "<h2>Lives: </h2>";
 		for(i = 1; i <= maxLives; i++) {
 			if(i <= lives) {
-				hearts += "<img src=\"heart.png\" width=\"5%\">";
+				hearts += "<img src=\"heart.png\" width=\"3%\">";
 			}
 			else {
-				hearts += "<img src=\"blackheart.png\" width=\"5%\">";
+				hearts += "<img src=\"blackheart.png\" width=\"3%\">";
 			}
 		}
 		live.innerHTML += hearts;
@@ -259,6 +261,7 @@
 			let audio;
 			switch(level) {
 				case "easy": {
+					audio = document.getElementById("owie");
 					break;
 				}
 				case "medium": {
@@ -270,7 +273,7 @@
 					break;	
 				}
 			}
-			audio.currentTime = 0;
+			//audio.currentTime = 0;
 			audio.playbackRate =  2-threshold/1500;
 			audio.play();
 			
@@ -280,7 +283,7 @@
 			document.body.style.background = "linear-gradient(rgba(255,0,0,0.3),rgba(255, 0, 0, 0.3)),url(\"originalpark.jpg\")";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
-				document.body.style.background = "linear-gradient(rgba(255,255,255,0.3),rgba(255, 255, 255, 0.3)),url(\"originalpark.jpg\")";
+				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"originalpark.jpg\")";
 				document.body.style.backgroundSize = "100%";
 			}, 100);
 		});
@@ -295,14 +298,14 @@
 
 	function addCookies() {
 		let cookie = document.getElementById("cookies");
-		let line = "<h1 font-size: 1.5em>";
-		let cookieLength = widthOf("<h1>🍪</h1>");
-		console.log(cookieLength);
+		let line = "<h1>";
+		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
 		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
 			line += '🍪';
 		}
 		line += "<\h1>";
 		cookies.innerHTML = line;
+		//document.getElementById("cookie").remove();
 	}
 
 	function widthOf(text) {
@@ -328,13 +331,10 @@
 	<div id="welcome">
 	<div id="start">
 	<button id="easy" onclick="easy()">Easy</button>
-	<br>
-	<br>
+	<br><br>
 	<button id="medium" onclick="medium()">Medium</button>
-	<br>
-	<br>
+	<br><br>
 	<button id="hard" onclick="hard()">Hard</button>
-	<br>
 	</div>
 
 	<div id="images" hidden>
@@ -374,7 +374,8 @@
 <div id="scores">
 <div id="cookies"></div>
 <div id="killCounter"><h2>Ant Deaths: </h2></div>
-<div id="liveCounter"><h2>Lives: </h2></div>	
+<div id="liveCounter"><h2>Lives: </h2></div>
+<a onclick="window.location.reload()"><h2>Restart</h2></a>
 </div>
 </footer>
 
