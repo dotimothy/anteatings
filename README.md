@@ -7,6 +7,7 @@ before they kill you....
 
 The game utilizes HTML, CSS, JS to create
 a web app with various sound effects in 3 different game modes:
+
 -Easy
 -Medium
 -Hard
