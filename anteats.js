@@ -24,6 +24,9 @@
     var elem = document.documentElement;
 
     function openFullscreen() {
+        console.log(elem.requestFullscreen);
+        console.log(elem.webkitRequestFullscreen);
+        console.log(elem.msRequestFullscreen);
         if (elem.requestFullscreen) {
           elem.requestFullscreen();
         } else if (elem.webkitRequestFullscreen) {
