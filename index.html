@@ -107,19 +107,19 @@
 
 	@keyframes leftPeter {
 		0% {
-			transform: translate(-280%, 48%);
+			transform: translate(-350%,0%);
 		}
 		100% {
-			transform: translate(-560%, 48%);
+			transform: translate(-605%,0%);
 		}
 	}
 
 	@keyframes rightPeter {
 		0% {
-			transform: translate(105%,-57%);
+			transform: translate(140%,-75%);
 		}
 		50% {
-			transform: translate(400%, -40%);
+			transform: translate(400%,-75%);
 		}
 		100% {
 			transform: translate(400%,200%); 
@@ -167,10 +167,10 @@
 		scores.style.display = "block";
 		start.hidden = true;
 		addCookies();
-		leftPeter.style.animation = "leftPeter 0.5s 1 linear";
-		rightPeter.style.animation = "rightPeter 0.5s 1 linear";
+		leftPeter.style.animation = "leftPeter 1s 1 linear";
+		rightPeter.style.animation = "rightPeter 2s 1 linear";
 		setTimeout(function() {
-			leftPeter.style.transform = "translate(-560%, 48%)";
+			leftPeter.style.transform = "translate(-605%, 0%)";
 			rightPeter.style.transform = "translate(400%, 200%)";
 		},500);
 		lives = maxLives, ants = 1, killScore = 0, antCounter = 0,  //medium
