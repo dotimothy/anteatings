@@ -16,6 +16,15 @@
 		font-family: Bebas Neue;
 		user-select: none;
 	}
+	body {
+		animation: fadein 1s 1 linear;
+	}
+	@keyframes fadein {
+		0% {
+			
+		}
+
+	}
 	h1 {
 		font-size: 3em;
 		display: inline-block;
@@ -249,6 +258,9 @@
 
 	function killAnt(antID){
 		++killScore;
+		let slurp = document.getElementById("slurp");
+		slurp.currentTime = 0;
+		slurp.play();
 		let ant = document.getElementById(antID);
 		ant.remove();
 		updateScores();
@@ -337,7 +349,7 @@
 	<button id="hard" onclick="hard()">Hard</button>
 	</div>
 
-	<div id="images" hidden>
+	<div id="media" hidden>
 	<img id="aldrich" src="aldrichpark.png">
 	<img id="ant" src="ant.PNG" width="10%" height="10%">
 	<img src="peter.png">
@@ -354,6 +366,9 @@
 	</audio>
 	<audio controls id="owie">
 		<source src="owie.wav">
+	</audio>
+	<audio controls id="slurp">
+		<source src="slurp.wav">
 	</audio>
 	</div>
 
