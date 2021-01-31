@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 
 <head>
-	<title>UCIHacks: Peter The Anteater</title>
-	<link rel="icon" href="head.png">
+	<title>UCIHacks: Anteatings</title>
+	<link rel="icon" href="media/head.png">
 </head>
 
 <!--Authors:
@@ -59,7 +59,7 @@
 		position: fixed;
 	}
 	body {
-		background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("originalpark.jpg");
+		background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
 		background-size: 100%;
 	}
 	@keyframes twitch {
@@ -125,9 +125,11 @@
 			transform: translate(400%,200%); 
 		}
 	}
-
+	a {
+		color: blue;
+	}
 	a:hover {
-		opacity: 0.5
+		opacity: 0.5;
 	}
 </style>
 
@@ -142,8 +144,17 @@
 	* Peter the Anteater :) (check)
 	*/
 
+	window.addEventListener('resize',checkScreen);
+
 	let maxLives, lives, ants, killScore,antCounter, threshold, maxAnts, level;
 
+	function checkScreen() {
+		return window.innerWidth != screen.width ? setTimeout(function () {
+			alert("Invalid Screen Size, Please Show Full Screen & Reload.")
+			window.location.reload();
+		},0) : 1;
+	}
+	
 	function startGame(difficulty) {
 		level = difficulty;
 		switch(difficulty) {
@@ -225,10 +236,10 @@
 		live.innerHTML = "<h2>Lives: " + lives + "/" + maxLives + " Lives</h2>";
 		for(i = 1; i <= maxLives; i++) {
 			if(i <= lives) {
-				hearts += "<img src=\"heart.png\" width=\"3%\">";
+				hearts += "<img src=\"media/heart.png\" width=\"2%\">";
 			}
 			else {
-				hearts += "<img src=\"blackheart.png\" width=\"3%\">";
+				hearts += "<img src=\"media/blackheart.png\" width=\"2%\">";
 			}
 		}
 		live.innerHTML += hearts;
@@ -254,7 +265,7 @@
 		//document.write(spacer);
 		//let antWidth
 		let transformPercent = (random - 1)*5;
-		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"ant.PNG\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
+		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"media/ant.PNG\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
 		spawn.appendChild(ant);
 		ants++;
 	}
@@ -295,10 +306,10 @@
 			ant.remove();
 			--lives;
 			updateScores();
-			document.body.style.background = "linear-gradient(rgba(255,0,0,0.3),rgba(255, 0, 0, 0.3)),url(\"originalpark.jpg\")";
+			document.body.style.background = "linear-gradient(rgba(255,0,0,0.3),rgba(255, 0, 0, 0.3)),url(\"media/originalpark.jpg\")";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
-				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"originalpark.jpg\")";
+				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalpark.jpg\")";
 				document.body.style.backgroundSize = "100%";
 			}, 100);
 		});
@@ -338,11 +349,16 @@
 </script>
 
 
-<body>
-	<div id="interface">
-	<h1 id="title">🐜 Peter's Ant Eatings 🐜</h1>
-	<img id="peterleft" src="peter.png" style="position: fixed; transform: translate(-350%, 0%); width: 10%">
+<body draggable="false" onload="checkScreen()">
 	
+	<div id="interface">
+	<h1 id="title">🐜 Peter's AntEatings 🐜</h1>
+	<img draggable="false" id="peterleft" src="media/peter.png" style="position: fixed; transform: translate(-350%, 0%); width: 10%">
+	
+	<svg width="100%" height="100%">
+		<line x1="0%" y1="0%" x2="100%" y2="100%"/>	
+	</svg>
+
 	<div id="welcome">
 	<div id="start">
 	<button id="easy" onclick="easy()">Easy</button>
@@ -353,31 +369,31 @@
 	</div>
 
 	<div id="media" hidden>
-	<img id="aldrich" src="aldrichpark.png">
-	<img id="ant" src="ant.PNG" width="10%" height="10%">
-	<img src="peter.png">
-	<img src="peter2.png">
-	<img src="heart.png" width="10%">
+	<img id="aldrich" src="media/aldrichpark.png">
+	<img id="ant" src="media/ant.PNG" width="10%" height="10%">
+	<img src="media/peter.png">
+	<img src="media/peter2.png">
+	<img src="media/heart.png" width="10%">
 	<audio controls id="eaten">
-		<source src="eaten.wav">
+		<source src="media/eaten.wav">
 	</audio>
 	<audio controls id="haha">
-		<source src="haha.wav">
+		<source src="media/haha.wav">
 	</audio>
 	<audio controls id="warning">
-		<source src="warning.wav">
+		<source src="media/warning.wav">
 	</audio>
 	<audio controls id="owie">
-		<source src="owie.wav">
+		<source src="media/owie.wav">
 	</audio>
 	<audio controls id="slurp">
-		<source src="slurp.wav">
+		<source src="media/slurp.wav">
 	</audio>
 	</div>
 
 	</div>
 
-	<img id="peterright" src="peter2.png" style="position: fixed; transform: translate(130%,-205%); width: 10%;">
+	<img draggable="false" id="peterright" src="media/peter2.png" style="position: fixed; transform: translate(130%,-205%); width: 10%;">
 
 	</div>
 
@@ -395,6 +411,7 @@
 <div id="liveCounter"><h2>Lives: </h2></div>
 <a onclick="window.location.reload()"><h2>Restart</h2></a>
 </div>
+<h2>Made by <a onclick="window.location.href='https://github.com/dotimothy/ucihacks'">Zotkers</a>: Zot Zot Zot!</h2>
 </footer>
 
 </html>
