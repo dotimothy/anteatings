@@ -1,5 +1,5 @@
 # Peter's Anteatings
-Authors: Timothy Do, Tiffany Mejia, Christina Wong
+Collaborators: <a href="https://github.com/dotimothy">Timothy Do</a>, Tiffany Mejia, Christina Wong
 
 ## Welcome to Peter's Anteating!
 A Web Game specifically tailored for UCI Students!
