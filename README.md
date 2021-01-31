@@ -1,5 +1,5 @@
 # Peter's Anteatings
-Authors: Timothy Do, Tiffany Mejia, Christina Wong\
+Authors: Timothy Do, Tiffany Mejia, Christina Wong
 
 ## Welcome to Peter's Anteating!
 The goal is simple, eat all the ants
@@ -14,6 +14,24 @@ a web app with various sound effects in 3 different game modes:
 
 -Medium
 
+-Hard
+
+Each level increasing the amount of ants, spawn rate
+-Hard
+
+Each level increasing the amount of ants, spawn rate
+-Hard
+
+Each level increasing the amount of ants, spawn rate
+-Hard
+
+Each level increasing the amount of ants, spawn rate
+-Hard
+
+Each level increasing the amount of ants, spawn rate
+-Hard
+
+Each level increasing the amount of ants, spawn rate
 -Hard
 
 Each level increasing the amount of ants, spawn rate

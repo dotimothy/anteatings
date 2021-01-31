@@ -23,6 +23,7 @@
 
 	function startGame(difficulty) {
         window.addEventListener('resize',checkScreen);
+        checkScreen();
         level = difficulty;
         let message = ""
 		switch(difficulty) {
@@ -186,10 +187,10 @@
 			ant.remove();
 			--lives;
 			updateScores();
-			document.body.style.background = "linear-gradient(rgba(255,0,0,0.3),rgba(255, 0, 0, 0.3)),url(\"media/originalpark.jpg\")";
+			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(255,0,0,0.2))";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
-				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalpark.jpg\")";
+				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
 				document.body.style.backgroundSize = "100%";
 			}, 100);
 		});
