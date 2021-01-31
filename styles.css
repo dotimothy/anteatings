@@ -34,12 +34,15 @@ button {
     font-size: 2.5em; 
     border-radius: 8px;
     padding: 6px;
-    border-width: thin thick;
+    border-width: thick;
+    border-color: rgb(161, 161, 161);
+    border-style: outset;
 }
 button:hover {
     opacity: 0.75;
 }
 button:active {
+    opacity: 1;
     transform: translateY(3px);
 }
 #cover {
@@ -56,7 +59,8 @@ button:active {
 #title {
     background-color: rgb(247, 241, 168);
     padding: 5px;
-    border: black;
+    border: 3px solid;
+    border-style: dashed;
 }
 #interface {
     width: 50%;
@@ -78,10 +82,15 @@ button:active {
         transform: rotate(-45deg);
     }
 }
-.alive {
-    animation: down 3s 1 linear, twitch 0.5s infinite linear;   
+.easy {
+    animation: down 4s 1 linear, twitch 0.5s infinite linear;   
 }
-
+.medium {
+    animation: down 3s 1 linear, twitch 0.5s infinite linear;
+}
+.hard {
+    animation: down 2s 1 linear, twitch 0.5s infinite linear;   
+}
 #scores {
     display: none;
     line-height: 80%;
@@ -121,10 +130,10 @@ footer {
 
 @keyframes rightPeter {
     0% {
-        transform: translate(140%,-75%);
+        transform: translate(140%,-80%);
     }
     100% {
-        transform: translate(400%,-75%);
+        transform: translate(400%,-80%);
     }
 }
 a {

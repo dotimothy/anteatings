@@ -37,9 +37,8 @@
       }
 
 	function startGame(difficulty) {
-        
-        //checkScreen();
-        //window.addEventListener('resize',checkScreen);
+        checkScreen();
+        window.addEventListener('resize',checkScreen);
         level = difficulty;
         let message = ""
 		switch(difficulty) {
@@ -76,11 +75,11 @@
 		rightPeter.style.animation = "rightPeter 1s 1 linear";
 		setTimeout(function() {
 			leftPeter.style.transform = "translate(-605%, 0%)";
-			rightPeter.style.transform = "translate(400%, -75%)";
+			rightPeter.style.transform = "translate(400%, -80%)";
 		},500);
 		lives = maxLives, ants = 1, killScore = 0, antCounter = 0,  //medium
 		updateScores(); 
-		for(antCounter = 0; antCounter * (window.innerWidth/maxAnts) < window.innerWidth; antCounter++) {
+		for(antCounter = 0; antCounter * (screen.width/maxAnts) < screen.width; antCounter++) {
 			if (!antCounter) {
 				drawAnt();	
 			}
@@ -149,17 +148,38 @@
 			let lose = (lives <= 0);
 			let win = (ants == antCounter+1 && killScore >= ants-(maxLives-lives+1));
 			if(lose) {
-				alert("You are Dinner.");
-				window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548?autoplay=1";
+                let sizzle = document.getElementById("sizzle");
+                sizzle.currentTime = 0;
+                sizzle.volume = 0.4;
+                sizzle.play();
+				alert("The Ants Says: Winner Winner Chicken Dinner! (You are the Chicken 😂)");
+				switch(level) {
+                    case "easy": {
+                        return window.location.href = "https://www.youtube.com/watch?v=g3jCAyPai2Y&ab_channel=jeekui&autoplay=1";
+                        break;
+                    }
+                    case "medium": {
+						return window.location.href = "https://www.youtube.com/watch?v=j9V78UbdzWI&ab_channel=DigiNeko?&autoplay=1";
+						break;
+					}
+                    case "hard": {
+						return window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548?autoplay=1";
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+					
+				}
 			}
 			else if(win) {
                 let ding = document.getElementById("ding");
                 ding.currentTime = 0;
                 ding.play();
-				alert("You Survived.");
-				window.location.reload();
+				alert("You Survived! 😍");
+				return window.location.reload();
 			}
-		},10);
+		},100);
 	}
 
 	function drawAnt() {
@@ -170,7 +190,7 @@
 		//document.write(spacer);
 		//let antWidth
 		let transformPercent = (random - 1)*5;
-		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"media/ant.PNG\" width=\"5%\" class=\"ant alive\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
+		let ant = HTMLify("<img draggable=\"false\" onload=\"takeLife('" + id + "')\" src=\"media/ant.PNG\" width=\"5%\" class=\"ant " + level + "\" style=\"left: " + transformPercent + "%\" id=\"" + id + "\" onclick=killAnt('" + id + "')>");
 		spawn.appendChild(ant);
 		ants++;
 	}
@@ -185,7 +205,6 @@
         ant.removeAttribute('onclick');
         ant.setAttribute('src','media/deadAnt.png');
         ant.setAttribute('style','animation-play-state: paused');
-		//setTimeout(ant.remove(),1500);
 		updateScores();
 	}
 
@@ -208,9 +227,9 @@
 					break;	
 				}
 			}
-            //audio.currentTime = 0;
+            audio.currentTime = 0;
             audio.volume = 0.25;
-			audio.playbackRate =  2-threshold/1500;
+			audio.playbackRate =  2-threshold/1000;
 			audio.play();
 			
 			ant.remove();
@@ -237,7 +256,7 @@
 		let cookie = document.getElementById("cookies");
 		let line = "<h1>";
 		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
-		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
+		for(let i = 0; i < Math.trunc(screen.width/cookieLength); i += 1) {
 			line += '🍪';
 		}
 		line += "<\h1>";
