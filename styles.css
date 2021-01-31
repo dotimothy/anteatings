@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+* {
+    font-family: Bebas Neue;
+    user-select: none;
+}
+body {
+    background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
+    background-size: 100%;
+    animation: fadein 2s 1 linear;
+}
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        background: black;
+    }
+    50% {
+        opacity: 0.5;
+        background: green;
+    }
+    100% {
+        opacity: 1;
+        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url("media/originalpark.jpg");
+        background-size: 100%;
+    }
+
+}
+h1 {
+    font-size: 3em;
+    display: inline-block;
+}
+button {
+    font-size: 2.5em; 
+    border-radius: 8px;
+    padding: 6px;
+}
+button:hover {
+    opacity: 0.75;
+}
+button:active {
+    transform: translateY(3px);
+}
+#title {
+    background-color: rgb(236, 230, 134);
+    padding: 5px;
+    border: black;
+}
+#interface {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+}
+.ant {
+    user-select: none;
+    position: fixed;
+}
+@keyframes twitch {
+    0% {
+        transform: rotate(-45deg);
+    }
+    50% {
+        transform: rotate(45deg); 
+    }
+    100% {
+        transform: rotate(-45deg);
+    }
+}
+.alive {
+    animation: down 3s 1 linear, twitch 0.5s infinite linear;   
+}
+
+#scores {
+    display: none;
+    line-height: 80%;
+}
+
+#easy {
+    background-color:lime;
+}
+#medium {
+    background-color: yellow;
+}
+#hard {
+    background-color: red;
+}
+@keyframes down {
+    from {
+        top: 10%;
+    }
+    to {
+        top: 70%;
+    }
+}
+
+footer {
+    position: fixed;
+    bottom: 0%;
+}
+
+@keyframes leftPeter {
+    0% {
+        transform: translate(-350%,0%);
+    }
+    100% {
+        transform: translate(-605%,0%);
+    }
+}
+
+@keyframes rightPeter {
+    0% {
+        transform: translate(140%,-75%);
+    }
+    50% {
+        transform: translate(400%,-75%);
+    }
+    100% {
+        transform: translate(400%,200%); 
+    }
+}
+a {
+    color: blue;
+}
+a:hover {
+    opacity: 0.5;
+}
