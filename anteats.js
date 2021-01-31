@@ -57,8 +57,8 @@
 			}	 		
 		}
         message += " (Please Use Full Screen to Play)";
-        let confirm = confirm(message);
-        if(confirm)
+        let pass = confirm(message);
+        if(pass)
         {
             openFullscreen();
         }
