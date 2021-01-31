@@ -74,13 +74,13 @@ button:active {
 }
 
 #easy {
-    background-color:lime;
+    background-color:rgb(165, 245, 165);
 }
 #medium {
-    background-color: yellow;
+    background-color: rgb(245, 245, 150);
 }
 #hard {
-    background-color: red;
+    background-color: rgb(245, 135, 135);
 }
 @keyframes down {
     from {
@@ -109,11 +109,8 @@ footer {
     0% {
         transform: translate(140%,-75%);
     }
-    50% {
-        transform: translate(400%,-75%);
-    }
     100% {
-        transform: translate(400%,200%); 
+        transform: translate(400%,-75%);
     }
 }
 a {

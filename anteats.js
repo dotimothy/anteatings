@@ -44,10 +44,10 @@
 		start.hidden = true;
 		addCookies();
 		leftPeter.style.animation = "leftPeter 1s 1 linear";
-		rightPeter.style.animation = "rightPeter 2s 1 linear";
+		rightPeter.style.animation = "rightPeter 1s 1 linear";
 		setTimeout(function() {
 			leftPeter.style.transform = "translate(-605%, 0%)";
-			rightPeter.style.transform = "translate(400%, 200%)";
+			rightPeter.style.transform = "translate(400%, -75%)";
 		},500);
 		lives = maxLives, ants = 1, killScore = 0, antCounter = 0,  //medium
 		updateScores(); 
