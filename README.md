@@ -3,6 +3,7 @@ Collaborators: <a href="https://github.com/dotimothy">Timothy Do</a>, Tiffany Me
 
 ## Welcome to Peter's Anteating!
 A Web Game specifically tailored for UCI Students!
+<a href="https://www.youtube.com/watch?v=FqF-w8cgEvA&feature=youtu.be&ab_channel=TimothyDo">Video Demo!</a>
 
 The goal is simple, eat all the ants
 before they eat your cookies or you...
