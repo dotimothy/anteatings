@@ -21,9 +21,22 @@
         },0) : 1;
     }
 
+    var elem = document.documentElement;
+
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) {
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { 
+          elem.msRequestFullscreen();
+        }
+      }
+
 	function startGame(difficulty) {
-        window.addEventListener('resize',checkScreen);
+        openFullscreen();
         checkScreen();
+        window.addEventListener('resize',checkScreen);
         level = difficulty;
         let message = ""
 		switch(difficulty) {
@@ -159,10 +172,10 @@
 		slurp.volume = 0.25;
 		slurp.play();
         let ant = document.getElementById(antID);
-        //ant.removeAttribute('style');
-        ant.removeAttribute('class');
+        ant.removeAttribute('onclick');
         ant.setAttribute('src','/media/deadAnt.png');
-		//setTimeout(ant.remove(),500);
+        ant.setAttribute('style','animation-play-state: paused');
+		//setTimeout(ant.remove(),1500);
 		updateScores();
 	}
 
@@ -193,33 +206,70 @@
 			ant.remove();
 			--lives;
 			updateScores();
-			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
+
+            document.body.style.background = "linear-gradient(rgba(255,0,0,0.2),rgba(255,0,0, 0.2)),url(\"media/originalparkc.jpg\")";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
-                //document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
 				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
-				}
-				case "hard": {
-					audio = document.getElementById("haha");	
-					break;	
-				}
-			}
-            //audio.currentTime = 0;
-            audio.volume = 0.25;
-			audio.playbackRate =  2-threshold/1500;
-			audio.play();
-			
-			ant.remove();
-			--lives;
-			updateScores();
-			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
+				document.body.style.backgroundSize = "100%";
+			}, 100);
+		});
+	}
+
+
+	function HTMLify(txt) {
+		let div = document.createElement('div');
+		div.innerHTML = txt;
+		return div.firstElementChild;
+	}
+
+	function addCookies() {
+		let cookie = document.getElementById("cookies");
+		let line = "<h1>";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
                 //document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
 				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
 				document.body.style.backgroundSize = "100%";
 			}, 100);
-		});
+	}
+
+
+	function HTMLify(txt) {
+		let div = document.createElement('div');
+		div.innerHTML = txt;
+		return div.firstElementChild;
+	}
+
+	function addCookies() {
+		let cookie = document.getElementById("cookies");
+		let line = "<h1>";
+		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
+		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
+			line += '🍪';
+		}
+		line += "<\h1>";
+		cookies.innerHTML = line;
+		//document.getElementById("cookie").remove();
+	}
+
+
+	function HTMLify(txt) {
+		let div = document.createElement('div');
+		div.innerHTML = txt;
+		return div.firstElementChild;
+	}
+
+	function addCookies() {
+		let cookie = document.getElementById("cookies");
+		let line = "<h1>";
+		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
+		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
+			line += '🍪';
+		}
+		line += "<\h1>";
+		cookies.innerHTML = line;
+		//document.getElementById("cookie").remove();
 	}
 
 
