@@ -37,9 +37,9 @@
       }
 
 	function startGame(difficulty) {
-        openFullscreen();
-        checkScreen();
-        window.addEventListener('resize',checkScreen);
+        
+        //checkScreen();
+        //window.addEventListener('resize',checkScreen);
         level = difficulty;
         let message = ""
 		switch(difficulty) {
@@ -57,7 +57,14 @@
 			}	 		
 		}
         message += " (Please Use Full Screen to Play)";
-        alert(message);
+        let confirm = confirm(message);
+        if(confirm)
+        {
+            openFullscreen();
+        }
+        else {
+            return;
+        }
 		let start = document.getElementById("start");
 		let scores = document.getElementById("scores");
 		let leftPeter = document.getElementById("peterleft");
@@ -229,12 +236,13 @@
 	function addCookies() {
 		let cookie = document.getElementById("cookies");
 		let line = "<h1>";
-			document.body.style.backgroundSize = "100%";	
-			setTimeout(function() { 
-                //document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
-				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
-				document.body.style.backgroundSize = "100%";
-			}, 100);
+		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
+		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
+			line += '🍪';
+		}
+		line += "<\h1>";
+		cookies.innerHTML = line;
+		//document.getElementById("cookie").remove();
 	}
 
 	function widthOf(text) {
