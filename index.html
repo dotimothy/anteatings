@@ -16,13 +16,14 @@
 	* {
 		font-family: Bebas Neue;
 		user-select: none;
-	}
-	body {
-		animation: fadein 1s 1 linear;
+		animation: fadein 2s 1 linear;
 	}
 	@keyframes fadein {
 		0% {
-			
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
 		}
 
 	}
@@ -32,7 +33,6 @@
 	}
 	button {
 		font-size: 2.5em; 
-		background-color: rgb(194, 219, 235);
 		border-radius: 8px;
 		padding: 6px;
 	}
