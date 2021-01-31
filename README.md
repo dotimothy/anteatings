@@ -1,7 +1,7 @@
 # Peter's Anteatings: Peter's Ant Hunt!
 Collaborators: <a href="https://github.com/dotimothy">Timothy Do</a>, Tiffany Mejia, Christina Wong
 
-## Welcome to Peter's Anteating!
+## Welcome to Peter's Anteatings!
 A Web Game specifically tailored for UCI Students!
 <a href="https://www.youtube.com/watch?v=FqF-w8cgEvA&feature=youtu.be&ab_channel=TimothyDo">Video Demo!</a>
 
