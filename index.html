@@ -2,6 +2,7 @@
 
 <head>
 	<title>UCIHacks: Peter The Anteater</title>
+	<link rel="icon" href="head.png">
 </head>
 
 <!--Authors:
@@ -234,13 +235,13 @@
 			let win = (ants == antCounter+1 && killScore >= ants-(maxLives-lives+1));
 			if(lose) {
 				alert("You are Dinner.");
-				window.location.reload();
+				window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548?autoplay=1";
 			}
 			else if(win) {
 				alert("You Survived.");
 				window.location.reload();
 			}
-		},100);
+		},10);
 	}
 
 	function drawAnt() {
