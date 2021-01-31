@@ -16,7 +16,7 @@
     
     function checkScreen() {
         return window.innerWidth != screen.width ? setTimeout(function () {
-            alert("Not Full Screen. Please Show Full Screen & Reload.")
+            alert("Not Full Screen. Please Show Full Screen & Reload.");
             window.location.reload();
         },0) : 1;
     }
@@ -130,6 +130,9 @@
 				window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548?autoplay=1";
 			}
 			else if(win) {
+                let ding = document.getElementById("ding");
+                ding.currentTime = 0;
+                ding.play();
 				alert("You Survived.");
 				window.location.reload();
 			}
@@ -155,8 +158,11 @@
 		slurp.currentTime = 0;
 		slurp.volume = 0.25;
 		slurp.play();
-		let ant = document.getElementById(antID);
-		ant.remove();
+        let ant = document.getElementById(antID);
+        //ant.removeAttribute('style');
+        ant.removeAttribute('class');
+        ant.setAttribute('src','/media/deadAnt.png');
+		//setTimeout(ant.remove(),500);
 		updateScores();
 	}
 
@@ -187,9 +193,29 @@
 			ant.remove();
 			--lives;
 			updateScores();
-			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(255,0,0,0.2))";
+			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
 			document.body.style.backgroundSize = "100%";	
 			setTimeout(function() { 
+                //document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
+				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
+				}
+				case "hard": {
+					audio = document.getElementById("haha");	
+					break;	
+				}
+			}
+            //audio.currentTime = 0;
+            audio.volume = 0.25;
+			audio.playbackRate =  2-threshold/1500;
+			audio.play();
+			
+			ant.remove();
+			--lives;
+			updateScores();
+			document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
+			document.body.style.backgroundSize = "100%";	
+			setTimeout(function() { 
+                //document.body.style.backgroundColor = "linear-gradient(rgba(255,0,0,0.2),rgba(0,0,0,0.2))";
 				document.body.style.background = "linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)),url(\"media/originalparkc.jpg\")";
 				document.body.style.backgroundSize = "100%";
 			}, 100);

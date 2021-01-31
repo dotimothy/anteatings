@@ -5,24 +5,23 @@
 }
 body {
     pointer-events: none;
-    animation: fadein 2.5s 1 linear;
     background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
     background-size: 100%;
 }
-@keyframes fadein {
+@keyframes fadeout {
     0% {
-        opacity: 0;
-        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
+        opacity: 1;
+        background-color: white; 
         background-size: 100%;
     }
     50% {
         opacity: 0.5;
-        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
+        background-color: white;
         background-size: 100%;
     }
     100% {
-        opacity: 1;
-        background: linear-gradient(rgba(255,255,255,0.2),rgba(255, 255, 255, 0.2)), url("media/originalparkc.jpg");
+        opacity: 0;
+        background-color: white;
         background-size: 100%;
     }
 
@@ -42,6 +41,17 @@ button:hover {
 }
 button:active {
     transform: translateY(3px);
+}
+#cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    z-index: 10;
+    animation: fadeout 2s forwards linear;
+    pointer-events: none;
 }
 #title {
     background-color: rgb(247, 241, 168);
