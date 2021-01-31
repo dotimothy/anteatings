@@ -18,7 +18,7 @@ a web app with various sound effects in 3 different game modes:
 
 - Hard: A Clicking Challenge!
 
-Each level increasing the amount of ants, spawn rate
+Each level increasing the amount of ants, speed, and spawn rate
 while decreasing the amount of total lives.
 
 Beware! Game can cause cringe in users.
