@@ -237,63 +237,6 @@
 			}, 100);
 	}
 
-
-	function HTMLify(txt) {
-		let div = document.createElement('div');
-		div.innerHTML = txt;
-		return div.firstElementChild;
-	}
-
-	function addCookies() {
-		let cookie = document.getElementById("cookies");
-		let line = "<h1>";
-		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
-		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
-			line += '🍪';
-		}
-		line += "<\h1>";
-		cookies.innerHTML = line;
-		//document.getElementById("cookie").remove();
-	}
-
-
-	function HTMLify(txt) {
-		let div = document.createElement('div');
-		div.innerHTML = txt;
-		return div.firstElementChild;
-	}
-
-	function addCookies() {
-		let cookie = document.getElementById("cookies");
-		let line = "<h1>";
-		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
-		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
-			line += '🍪';
-		}
-		line += "<\h1>";
-		cookies.innerHTML = line;
-		//document.getElementById("cookie").remove();
-	}
-
-
-	function HTMLify(txt) {
-		let div = document.createElement('div');
-		div.innerHTML = txt;
-		return div.firstElementChild;
-	}
-
-	function addCookies() {
-		let cookie = document.getElementById("cookies");
-		let line = "<h1>";
-		let cookieLength = widthOf("<h1 id=\"cookie\">🍪</h1>");
-		for(let i = 0; i < Math.trunc(window.innerWidth/cookieLength); i += 1) {
-			line += '🍪';
-		}
-		line += "<\h1>";
-		cookies.innerHTML = line;
-		//document.getElementById("cookie").remove();
-	}
-
 	function widthOf(text) {
 		let div = document.createElement('div');
 		div.innerHTML = text;
