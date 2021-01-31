@@ -17,12 +17,6 @@ a web app with various sound effects in 3 different game modes:
 -Hard
 
 Each level increasing the amount of ants, spawn rate
--Hard
-
-Each level increasing the amount of ants, spawn rate
--Hard
-
-Each level increasing the amount of ants, spawn rate
 while decreasing the amount of total lives.
 
 Beware! Game can cause cringe in users.
