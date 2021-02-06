@@ -16,8 +16,8 @@
     
     function checkScreen() {
         return window.innerWidth <= 0.9*screen.width ? setTimeout(function () {
-            alert("Not Full Screen. Please Show Full Screen & Reload.");
-            window.location.reload();
+            //alert("Not Full Screen. Please Show Full Screen & Reload.");
+            openFullscreen();
         },0) : 1;
     }
 
