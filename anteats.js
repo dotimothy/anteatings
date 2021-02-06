@@ -15,7 +15,7 @@
 	let maxLives, lives, ants, killScore,antCounter, threshold, maxAnts, level;
     
     function checkScreen() {
-        return window.innerWidth != screen.width ? setTimeout(function () {
+        return window.innerWidth <= 0.9*screen.width ? setTimeout(function () {
             alert("Not Full Screen. Please Show Full Screen & Reload.");
             window.location.reload();
         },0) : 1;
