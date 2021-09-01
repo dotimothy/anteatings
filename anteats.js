@@ -163,7 +163,7 @@
 						break;
 					}
                     case "hard": {
-						return window.location.href = "https://www.youtube.com/watch?v=oHg5SJYRHA0&ab_channel=cotter548?autoplay=1";
+						return window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ&autoplay=1";
                         break;
                     }
                     default: {
